@@ -615,6 +615,13 @@ footer > h2 {
   #client {
     min-height: unset;
   }
+
+  footer .content {
+    flex-flow: column;
+  }
+  footer .content .links nav {
+    flex-flow: column;
+  }
 }
 @media only screen and (max-width: 400px) {
   #client .client .slide .card {
