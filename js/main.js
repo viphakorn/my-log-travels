@@ -1,31 +1,34 @@
 
-const track = document.querySelector('#client .client .slide')
-const cards = document.querySelectorAll("#client .client .slide .card")
-const next = document.querySelector("#client .client .slide #next")
-const prev = document.querySelector("#client .client .slide #prev")
+const slider = document.querySelector('#client .client .slide')
+const slides = document.querySelectorAll("#client .client .slide .card")
+const nextBtn = document.querySelector("#client .client .slide #next")
+const prevBtn = document.querySelector("#client .client .slide #prev")
 
-let cardWidth = cards[0].getBoundingClientRect().width
-
-// const setTransform = (card, i) => {
-//     card.style.transform = `translateX(${cardWidth * i}px)`
-// }
-// cards.forEach(setTransform)
+let currentSlide = 0
+let maxSlide = slides.length - 2
+// let slideWidth = slides[0].getBoundingClientRect().width
 
 
-next.onclick = () => {
-    const currentSlide = track.querySelector('.current-slide')
-    const nextSlide = currentSlide.nextElementSibling
-    // console.log(amoutToMove);
-    cards.forEach((card) => {
-        card.style.transform = `translateX(-${cardWidth}px)`
-    });
-}
-prev.onclick = () => {
-    const currentSlide = track.querySelector('.current-slide')
-    const prevSlide = currentSlide.previousElementSibling
-    // console.log(amoutToMove);
-    cards.forEach((card) => {
-        card.style.transform = `translateX(${cardWidth}px)`
-    });
-}
+nextBtn.addEventListener("click", () => {
+    if (currentSlide === maxSlide) {
+      currentSlide = 0
+    } else {
+      currentSlide++
+    }
+    slides.forEach((slide,) => {
+  slide.style.transform = `translateX(${100 * -currentSlide}%)`
+    })
+})
+prevBtn.addEventListener("click", () => {
+  if (currentSlide === 0) {
+    currentSlide = maxSlide;
+  } else {
+    currentSlide--
+  }
+
+    slides.forEach((slide) => {
+  slide.style.transform = `translateX(${100 * currentSlide}%)`
+
+  })
+})
 
